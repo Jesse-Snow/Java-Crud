@@ -1,5 +1,7 @@
-1.Criação de pasta para driver de conexão com mysql e java.
-2.Criação de Classe Contato para identificação de Pessoas.
-3.Uso da Api jdbc para conexão e manipulação do banco de dados. 
-4.Criação de DAO ( Data access object)
-5.Criação de Declaração Sql no main 
+1.Adição de modulo do driver mysql jar.
+2.Criação de Classe Contato. 
+3.Criação de Classe ConnectionFactory com método createConnectionMySql com uso da Api jdbc para conexão com 
+o banco de dados.
+4.Criação de DAO ( Data access object) para manipulação dos dados do banco de dados ( junto com a classe
+contato )
+5.Criação de registro/linha no banco de dados através do método main 
