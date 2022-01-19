@@ -13,6 +13,8 @@ import br.com.agenda.models.Contato;
 public class ContatoDAO {
 	// Crud...
 	
+
+	
 	// Create
 	public void save(Contato contato) {
 
@@ -87,5 +89,37 @@ public class ContatoDAO {
 		}
 		
 		return contatos;
+	}
+	
+	// Update
+	public void update(Contato contato) {
+		String sql = "UPDATE contatos SET nome = ?,idade = ?, dataCadastro = ? WHERE id= ?";
+		
+		Connection con = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			con = ConnectionFactory.createConnectionMySql();
+			pstm = con.prepareStatement(sql);
+			
+			pstm.setString(1, contato.getNome());
+			pstm.setInt(2, contato.getIdade());
+			pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
+			pstm.setInt(4, contato.getId());
+			pstm.execute(); 
+
+			System.out.println("Contato atualizado");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con !=null && pstm != null) {
+				try {
+					con.close();
+					pstm.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }
