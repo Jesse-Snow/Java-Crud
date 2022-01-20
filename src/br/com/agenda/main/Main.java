@@ -15,7 +15,8 @@ public class Main {
 		
 		ContatoDAO contatoDao = new ContatoDAO();
 		// contatoDao.save(contato);
-		contatoDao.update(contato);
+		//contatoDao.update(contato);
+		//contatoDao.delete(3);
 		
 		// Visualização de Dados utilizando for each 
 		for(Contato c : contatoDao.getContatos()) {

@@ -14,6 +14,32 @@ public class ContatoDAO {
 	// Crud...
 	
 
+	// Delete
+	public void delete(int id) {
+		String sql = "DELETE FROM contatos WHERE id = ?";
+		
+		Connection con = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			con = ConnectionFactory.createConnectionMySql();
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, id);
+			System.out.println("Deletado com sucesso");
+			pstm.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(con != null && pstm !=null) {
+					con.close();
+					pstm.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	// Create
 	public void save(Contato contato) {
